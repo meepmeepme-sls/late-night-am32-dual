@@ -1,6 +1,7 @@
-# Dual 40 A AM32 Combat ESC — High-Backvoltage Hardware Design Specification
+# Dual 40 A AM32 Combat Drivetrain ESC — High-Backvoltage Hardware Design Specification
 
-**Baseline:** Combines the active current limiting, double-sided battery passthrough, and `AT32F421G8U7` stock firmware compatibility of the **Repeat Robotics Dual AM32 ESC** with the 40 A continuous rating, plated through-hole wire tabs, and horizontal `50 V` polymer capacitor bank of the **Just 'Cuz Robotics SNIPE Dual 40A (v2.0)** — **without custom mixer firmware** (two independent channels, mix on radio) and engineered from the ground up to survive **extreme high back-voltage (`45 V – 80 V+`), violent regenerative braking, and back-driven weapon impacts in 6S LiHV combat robotics**.
+**Target Envelope:** **3S–6S LiPo / LiHV (`9.0 V – 26.1 V`)** combat robot **drivetrain** application (`40 A` continuous per channel × 2 channels).
+**Baseline:** Combines the active current limiting, double-sided battery passthrough, and `AT32F421G8U7` stock firmware compatibility of the **Repeat Robotics Dual AM32 ESC** with the 40 A continuous rating, plated through-hole wire tabs, and horizontal `50 V` polymer capacitor bank of the **Just 'Cuz Robotics SNIPE Dual 40A (v2.0)** — **without custom mixer firmware** (two independent channels, mix on radio) and engineered from the ground up to survive **extreme high back-voltage (`45 V – 80 V+`), violent regenerative braking, and back-driven weapon impacts in 3S–6S LiHV combat robotics**.
 
 ---
 
@@ -55,7 +56,7 @@ On a 6S LiHV (`26.1 V`) battery, a TVS diode must have a standoff voltage $V_{RW
    - We use **`2× 220 µF 50 V` Conductive Polymer Aluminum Capacitors** (`JBLH2221M050E125RLM`, LCSC **`C19270689`**, or `2× 330 µF – 470 µF 50 V` hybrid polymer caps) in a horizontal recessed bay, backed by **`12× 10 µF 50 V` X7R `1206` soft-termination MLCCs** (`6` per channel directly across the half-bridges).
 5. **Negative-`VS` Undershoot Clamping & Asymmetric Fast-Turn-Off Gate Drive (`FD6288Q` Hardening):**
    - When braking hard at 40 A+, rapid di/dt across motor phase inductance drags the switch node (`VS1/2/3`) **negative below `GND` (`-5 V to -10 V`)**, which latches up or blows monolithic gate drivers, while high positive $dV/dt$ injects current through the MOSFET Miller capacitance ($C_{GD}$) to cause shoot-through.
-   - We add **6× `RB520S-30` / `BAT54WS` (`30 V, 1 A` low-$V_F$ Schottky diodes)** from `GND` (anode) directly to `VS1/2/3` (cathode) at the `FD6288Q` pins, clamping negative undershoot to `-0.3 V`.
+   - We add **6× `BAT46WS` / `BAV19WS` / `SS110` (`100 V` fast/Schottky diodes)** from `GND` (anode) directly to `VS1/2/3` (cathode) at the `FD6288Q` pins, clamping negative undershoot to `-0.3 V` while easily surviving `45.4 V` 6S spikes.
    - We use **asymmetric gate networks** (`10 Ω` turn-on resistor in parallel with a `1N4148WS` diode + `2.2 Ω` turn-off resistor, plus a `10 kΩ` gate-to-source pull-down on all 12 FETs) so turn-off is **4.5× stronger** than turn-on, locking the off-state gate down during violent back-EMF spikes.
    - We place **6× `RC` phase snubbers (`2.2 Ω` `0603` + `1 nF 100 V` X7R `0603`)** from each motor phase (`A, B, C`) to `GND` to damp high-frequency ringing.
 6. **`BAT54S` Analog BEMF & `VBAT_ADC` Input Clamping (Protects the MCUs Above `39.6 V`):**

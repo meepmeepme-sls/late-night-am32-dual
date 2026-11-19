@@ -1,6 +1,6 @@
 # Late Night AM32 Dual
 
-A bulletproof, high-backvoltage **Dual 40 A AM32 Combat Robot ESC** engineered for 2S–6S LiHV (`6.0 V – 26.1 V`) drive systems, featuring an overbuilt **100 V-rated 5 V receiver BEC**, **85 V high-avalanche MOSFETs**, **3000 W surge clamping**, and **100% stock `AM32_RR_ROBOT_DUAL_ESC_F421` firmware compatibility** (no custom mixer firmware; mix on transmitter).
+A bulletproof, high-backvoltage **Dual 40 A AM32 Combat Robot Drivetrain ESC** engineered for **3S–6S LiHV (`9.0 V – 26.1 V`)** drive systems, featuring an overbuilt **100 V-rated 5 V receiver BEC**, **85 V high-avalanche MOSFETs**, **3000 W surge clamping**, and **100% stock `AM32_RR_ROBOT_DUAL_ESC_F421` firmware compatibility** (no custom mixer firmware; mix on transmitter).
 
 ## Repository Contents
 

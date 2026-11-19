@@ -23,7 +23,7 @@ Designator,Qty,Value / Spec,Package,Manufacturer Part,LCSC Part,Subsystem,Notes
 "C_BEC_OUT1, C_BEC_OUT2",2,"22uF 16V X7R MLCC",0805 or 1206,Verify Basic Part in JLC,Verify in JLC/LCSC,5V RX BEC,"Local U7 output caps before FB2 (COT loop stability)"
 "D_BOOT1-6",6,"100V Fast Switching Bootstrap Diode",SOD-323,1N4148WS or BAV19WS,Verify Basic Part in JLC,Gate Drive,"External bootstrap diodes from 10V_DRV to VB1/2/3 (2.2 Ohm series bootstrap resistor)"
 "C_BOOT1-6",6,"220nF-470nF 50V X7R MLCC",0603,Verify Basic Part in JLC,Verify in JLC/LCSC,Gate Drive,"Placed within 3mm of FD6288Q VB1-VS1, VB2-VS2, VB3-VS3 pins"
-"D_VS1-6",6,"30V 1A Low-Vf Schottky (Negative-VS Spike Clamp)",SOD-323 / SOD-123,RB520S-30 or BAT54WS,Verify in JLC/LCSC,Gate Drive,"Anode to GND, Cathode to VS1/2/3 at FD6288Q; clamps negative phase undershoot during active braking"
+"D_VS1-6",6,"100V 0.2A-1A Fast/Schottky (Negative-VS Spike Clamp)",SOD-323 / SOD-123,BAT46WS or BAV19WS or SS110,Verify in JLC/LCSC,Gate Drive,"Anode to GND, Cathode to VS1/2/3 at FD6288Q; 100V reverse rating survives 45.4V 6S spikes"
 "R_GON1-12",12,"10 Ohm 1% Gate Turn-On Resistors",0402,Verify Basic Part in JLC,Verify in JLC/LCSC,Gate Drive,"Controlled turn-on slew rate to minimize phase dV/dt ringing"
 "D_GOFF1-12, R_GOFF1-12",12,"1N4148WS Diode + 2.2 Ohm Turn-Off Path",SOD-323 + 0402,1N4148WS + 2.2R,Verify Basic Part in JLC,Gate Drive,"Asymmetric fast turn-off prevents Miller Cgd dV/dt shoot-through on back-EMF hits"
 "R_GPD1-12",12,"10 kOhm 1% Gate-Source Pull-Down",0402,Verify Basic Part in JLC,Verify in JLC/LCSC,Gate Drive,"Keeps MOSFET gates hard off if back-driven before MCU/BEC boot"

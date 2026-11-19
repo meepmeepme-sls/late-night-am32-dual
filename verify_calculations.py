@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Electrical, thermal & high-backvoltage transient checks for the Dual 40A AM32 Combat ESC."""
+"""Electrical, thermal & high-backvoltage transient checks for the Dual 40A AM32 3S-6S Drivetrain ESC."""
 
-VBAT_MIN = 6.0        # 2S discharged
-VBAT_NOM = 14.8       # 4S nominal
+VBAT_MIN = 9.0        # 3S discharged
+VBAT_NOM = 22.2       # 6S nominal
 VBAT_MAX = 26.1       # 6S LiHV full charge (4.35V * 6)
 V_TVS_CLAMP_28A = 45.4  # SMDJ28A (3000W) max clamping voltage @ 66.1A Ipp
 V_TVS_CLAMP_30A = 48.4  # SMDJ30A (3000W) max clamping voltage @ 62.0A Ipp
